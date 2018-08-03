@@ -12,6 +12,9 @@ class CountryFlagContainer extends Component {
   // zawierają wywołania dispatch() służące do interakcji ze storem
   componentDidMount() {
     this.props.dispatch(getCountries());
+    //linijka odpowiedzialną za wywołanie dispatcha z kreatorem searchCountries,
+    //który wyszukuje pustego stringa(W każdej nazwie państwa znajduje się cokolwiek (pusty string),
+    //dlatego za każdym razem po wejściu na tę stronę otrzymamy listę wszystkich dostępnych państw)
     this.props.dispatch(searchCountries(''));
   }
   //Każda funkcja przypisana do eventu może przyjąć jako pierwszy parametr informacje o evencie.
