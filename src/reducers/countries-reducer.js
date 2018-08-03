@@ -1,6 +1,6 @@
 //reducer
 //import akcji
-import { GET_COUNTRIES, GET_COUNTRY, SEARCH_COUNTRIES } from '../actions/actions-countries';
+import { GET_COUNTRIES, GET_COUNTRY, SEARCH_COUNTRIES, DELETE_COUNTRY } from '../actions/actions-countries';
 //import danych o panstwach
 import countriesData from '../data/countries.json';
 
@@ -15,7 +15,8 @@ const initialState = {
   selectedCountry: {},
   //tablica obiektów (państw), których pole name pokrywa się z wyszukiwaną frazą
   //to tablica ponieważ jednocześnie może być widocznych wiele państw.
-  visibleCountries: []
+  //visibleCountries: []
+  visibleCountries: countriesData
 };
 
 //zabezp: gdy przekazania do reducera stanu aplikacji w stanie undefined
@@ -45,6 +46,13 @@ const countriesReducer = function (state = initialState, action) {
       const foundCountries = state.countries.filter(country => country.name.toLowerCase().includes(action.searchText.toLowerCase()));
       //tworzymy nowy obiekt za pomocą Object.assign() i przypisujemy do niego poprzedni stan aplikacji, w którym wartość pola visibleCountries będzie równa foundCountries.
       return Object.assign({}, state, {visibleCountries: foundCountries});
+
+    case DELETE_COUNTRY:
+    //usuwamy pasnwtwo z calej aplikacji
+      const notDeletedCountries = state.countries.filter(country => country.id != action.id);
+    //usuwamy panstwo z obecnie wyswietlanej listy panstw
+      const notDeletedVisibleCountries = state.visibleCountries.filter(country => country.id != action.id);
+      return Object.assign({}, state, {countries: notDeletedCountries, visibleCountries: notDeletedVisibleCountries});
   }
   return state;
 };

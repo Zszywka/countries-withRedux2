@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CountryFlagList from '../presentational/flag-list.component';
-import { getCountries, searchCountries } from '../actions/actions-countries';
+import { getCountries, searchCountries, deleteCountry } from '../actions/actions-countries';
 
 class CountryFlagContainer extends Component {
   constructor(props) {
@@ -23,6 +23,12 @@ class CountryFlagContainer extends Component {
   search(event) {
     this.props.dispatch(searchCountries(event.target.value));
   }
+  //przekazanie deleteCountry jako props do komponentu CountryFlagList(flag-container.component.js)
+  //Wywołuje ona jedynie dispatcha z odpowiednim kreatorem akcji(id-panstw do usuniecia)
+  //Metoda ta przypisana jest do propsa o nazwie deleteCountry
+  deleteCountry(id) {
+    this.props.dispatch(deleteCountry(id));
+  }
 
   //Stan aplikacji w polu countries->tablicę obiektów pobraną z pliku /data/countries.jsonv
   //input do wpisania frazy panstwa, onChange->sygnalizuje wywołanie akcji, jaką jest zmiana wartości pola.
@@ -36,7 +42,7 @@ class CountryFlagContainer extends Component {
         <div className='search text-center'>
           <input type="text" onChange={this.search.bind(this)}/>
         </div>
-        <CountryFlagList countries={this.props.visibleCountries} />
+        <CountryFlagList countries={this.props.visibleCountries} deleteCountry={this.deleteCountry.bind(this)} />
       </div>
     )
   }
