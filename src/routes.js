@@ -11,6 +11,8 @@ import NotFound from './presentational/not-found.component';
 import CountryFlagContainer from './containers/flag-container.component';
 //wysietlenie konkretnego panstwa
 import CountryDetailsContainer from './containers/country-details-container.component';
+//wyswietlanie panstw z tych samych kontynentow
+import ContinentsContainer from './containers/continents-container.component';
 // export default (
 //   //jest to wycięty fragment kodu z pliku src/index.js.
 //   //Od tej chwili wszystkie route'y będą definiowane w tym pliku.
@@ -40,6 +42,7 @@ export default (
     //gdzie id jest parametrem route parameter
       <Route path='country/:id' component={CountryDetailsContainer}/>
     </Route>
+    <Route path='continents' component={ContinentsContainer}/>
     <Route path='contact' component={Contact}/>
     <Route path='*' component={NotFound}/>
   </Route>
