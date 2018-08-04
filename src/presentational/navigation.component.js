@@ -3,8 +3,6 @@ import { Link } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
-//sztuczka z wykorzystaniem właściwości props.children
-//elementy drzewa DOM, które będą dziećmi komponentu <Navigation> zostaną wyrenderowane wewnątrz <div
 const Navigation = props => (
   <div>
     <nav className="navbar navbar-default">

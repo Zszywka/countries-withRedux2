@@ -1,5 +1,5 @@
 import React from 'react';
-//strona home ze sciezka '/'
+
 const Home = () => (
   <div>
     <h1>Witamy w aplikacji państwa.js</h1>

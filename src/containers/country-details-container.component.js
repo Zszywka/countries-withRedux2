@@ -9,7 +9,6 @@ class CountryDetailsContainer extends Component {
   }
 
   componentDidMount() {
-    //this.props.params.id-> pobierany z adresu URL(pobiera id panstwa)
     this.props.dispatch(getCountry(this.props.params.id));
   }
 

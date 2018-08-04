@@ -1,6 +1,4 @@
-//posiada props o nazwie country, zawiera informacje o jednym, konkretnym państwie
 import React from 'react';
-//ostylowanie calej aplikacji
 import '../country.css';
 
 const CountryDetails = (props) => (
