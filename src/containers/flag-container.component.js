@@ -5,6 +5,7 @@ import { getCountries, searchCountries, deleteCountry } from '../actions/actions
 
 class CountryFlagContainer extends Component {
   constructor(props) {
+    //pobierane sa dane od rodzica
     super(props);
   }
 
@@ -20,7 +21,7 @@ class CountryFlagContainer extends Component {
   deleteCountry(id) {
     this.props.dispatch(deleteCountry(id));
   }
-
+//moze korzystac z danych od rodzica ale tez ze stanu
   render() {
     return (
       <div>
@@ -32,12 +33,12 @@ class CountryFlagContainer extends Component {
     )
   }
 }
-
+//pobierane sa dane ze stanu
 const mapStateToProps = function (store) {
   return {
     countries: store.countriesReducer.countries,
     visibleCountries: store.countriesReducer.visibleCountries
   };
 };
-
+//eksport calej klasy CountryFlagContainer ale po wstrzyknieciu w nia mapStateToProps ze store
 export default connect(mapStateToProps)(CountryFlagContainer);
